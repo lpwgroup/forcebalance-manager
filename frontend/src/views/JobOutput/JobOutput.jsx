@@ -5,9 +5,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
 // @material-ui/icons
 import InsertChartIcon from '@material-ui/icons/InsertChart';
 // core components
@@ -15,7 +12,6 @@ import GridItem from "components/Grid/GridItem.jsx";
 import EnhancedTable from "components/Table/EnhancedTable.jsx";
 // models
 import api from "../../api";
-import { RunningStatus } from "../../constants";
 
 import AbinitioObjectiveView from "./TargetObjectives/AbinitioObjectiveView.jsx";
 
@@ -54,7 +50,7 @@ const targetObjectiveViews = {
 
 class JobOutput extends React.Component {
   state = {
-    currentIter: null,
+    currentIter: 0,
     optimizerState: {},
     targetsInfo: {},
     dialogTargetName: null,
@@ -78,16 +74,9 @@ class JobOutput extends React.Component {
   }
 
   updateOptimizerState = (data) => {
-    if (Object.keys(data).length > 0) {
-      this.setState({
-        optimizerState: data,
-      })
-      if (this.state.currentIter === null) {
-        this.setState({
-          currentIter: 0,
-        })
-      }
-    }
+    this.setState({
+      optimizerState: data,
+    })
   }
 
   updateTargetsInfo = (data) => {
@@ -126,27 +115,19 @@ class JobOutput extends React.Component {
   render() {
     const { classes } = this.props;
     const { currentIter, optimizerState, targetsInfo, dialogTargetType, dialogTargetName, dialogOpen } = this.state;
-    const iterButtons = [];
-    const iterations = [];
-    for (const d in optimizerState) {
-      iterations.push(optimizerState[d].iteration);
-    }
-    const lastIter = Math.max(...iterations);
-    for (let i = 0; i < lastIter + 1; i++) {
-      iterButtons.push(
-        <Button key={i}
-          onClick={(e) => this.handleClickIterButton(e, i)}
-          className={classes.iterButton}
-        >
-          Iteration {i}
-        </Button>
-      );
-    }
+    const iterations = Object.keys(optimizerState).map(s => parseInt(s)).sort();
+    const iterButtons = [iterations.map(i => {
+      return (<Button key={i} onClick={(e) => this.handleClickIterButton(e, i)} className={classes.iterButton} >
+        Iteration {i}
+      </Button>);
+    })];
+
+    const maxIter = iterations[iterations.length-1];
 
     // objective details dialog views
     const TargetObjectiveView = targetObjectiveViews[dialogTargetType];
     const TargetObjectiveDialog = dialogOpen ? (<Dialog open={dialogOpen} maxWidth='lg' fullWidth scroll='body'>
-      <TargetObjectiveView targetName={dialogTargetName} optIter={currentIter} onClose={this.handleCloseDialog} maxIter={lastIter}/>
+      <TargetObjectiveView targetName={dialogTargetName} optIter={currentIter} onClose={this.handleCloseDialog} maxIter={maxIter}/>
     </Dialog>) : <div/>;
 
     // get target names that has available objective views
@@ -164,7 +145,7 @@ class JobOutput extends React.Component {
         </div>
         <div className={classes.rightPanel}>
           <p className={classes.title}>Iteration {currentIter}</p>
-          {(currentIter !== null && optimizerState[currentIter]) ?
+          {(currentIter in optimizerState) ?
             <Grid>
               <GridItem xs={12} sm={12} md={12}>
                 <div className={classes.table}>
