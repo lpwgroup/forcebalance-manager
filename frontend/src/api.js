@@ -104,14 +104,14 @@ class ForceBalanceAPI {
         }
     }
 
-    createFittingTarget(targetName, targetType, files) {
+    createFittingTarget(targetName, targetType, files, callback) {
         if (this.projectName !== null) {
             this.socket.emit('create_fitting_target', this.projectName, {
                 targetName: targetName,
                 targetType: targetType,
                 fileNames: files.map(f => {return f.name}),
                 fileDatas: files
-            });
+            }, (data) => {callback(data)});
         }
     }
 

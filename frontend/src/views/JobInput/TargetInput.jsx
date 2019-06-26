@@ -4,40 +4,22 @@ import PropTypes from 'prop-types';
 import withStyles from "@material-ui/core/styles/withStyles";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-// import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
-import Tooltip from '@material-ui/core/Tooltip';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 // @material-ui/icons
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import FileUploadIcon from "@material-ui/icons/CloudUpload";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import DeleteIcon from '@material-ui/icons/Delete';
 // Components
 import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Button from "components/CustomButtons/Button.jsx";
-import Table from "components/Table/Table.jsx";
-// import FBtarget from "./FBtarget";
 import EnhancedTable from "components/Table/EnhancedTable";
 // Models
 import api from "../../api";
 import { RunningStatus } from "../../constants";
-
 import AbinitioGMXWizard from "./TargetWizards/AbinitioGMXWizard.jsx";
 import AbinitioSMINORFFWizard from "./TargetWizards/AbinitioSMIRNOFFWizard.jsx";
 import AbinitioGMXOptions from "./TargetOptions/AbinitioGMXOptions.jsx";
@@ -119,8 +101,7 @@ class TargetInput extends React.Component {
   };
 
   handleCreateTarget = (targetFiles) => {
-    api.createFittingTarget(this.state.dialogTargetName, this.state.dialogTargetType, targetFiles);
-    this.update();
+    api.createFittingTarget(this.state.dialogTargetName, this.state.dialogTargetType, targetFiles, this.update);
     this.resetDialog();
   }
 
