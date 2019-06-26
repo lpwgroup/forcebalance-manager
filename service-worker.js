@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/forcebalance-manager/precache-manifest.f20fc9540e32e16d4cebf9160fd97a86.js"
+  "/forcebalance-manager/precache-manifest.34c56e1a47b6cfb70bdf0357bbd7d055.js"
 );
 
 workbox.clientsClaim();
