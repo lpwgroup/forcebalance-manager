@@ -114,7 +114,7 @@ class FBProject(object):
         # create fbexecutor
         self._fbexecutor = FBExecutor(self.project_folder, prefix=self.prefix)
         self._fbexecutor.register_observer(self.observe_executor)
-        self._fbexecutor.finish_loading_in_thread()
+        # self._fbexecutor.finish_loading_in_thread()
 
     def load_from_project_folder(self, project_folder):
         """ Load the project data from the project folder """
