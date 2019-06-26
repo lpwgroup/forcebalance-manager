@@ -337,7 +337,7 @@ class AbinitioSMIRNOFFWizard extends React.Component {
             onChange={null}
             endAdornment={
               <InputAdornment position="end">
-                <input type="file" id="coords-file-upload" accept=".xyz,.XYZ,.gro,.GRO,.pdb,.PDB" className={classes.input} onChange={this.selectCoordsFile} />
+                <input type="file" id="coords-file-upload" accept=".xyz,.XYZ,.gro,.GRO" className={classes.input} onChange={this.selectCoordsFile} />
                 <label htmlFor="coords-file-upload">
                   <IconButton component="span">
                     <FileUploadIcon />
