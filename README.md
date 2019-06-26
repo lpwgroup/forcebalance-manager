@@ -20,7 +20,9 @@ To start the web app server:
 python run.py
 ```
 
-Then the webpage can be opened in browser (Chrome recommended), with default address http://localhost:5005
+This will start up the backend server.
+
+A production version of frontend webpage can be loaded from https://lpwgroup.github.io/forcebalance-manager
 
 ## Development
 
