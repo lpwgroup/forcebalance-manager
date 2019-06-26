@@ -19,7 +19,7 @@ import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboar
 import image from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/ForceBalance.svg";
 
-import ContextProvider from "../../ContextProvider.js";
+// import ContextProvider from "../../ContextProvider.js";
 import api from "../../api.js";
 
 const switchRoutes = (

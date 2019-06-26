@@ -54,6 +54,7 @@ class JobInput extends React.Component {
   }
 
   update = () => {
+    api.pullStatus();
   }
 
   updateStatus = (data) => {

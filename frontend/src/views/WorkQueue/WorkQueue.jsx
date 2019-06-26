@@ -4,34 +4,21 @@ import PropTypes from 'prop-types';
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 // @material-ui/icons
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import Store from "@material-ui/icons/Store";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
-import Warning from "@material-ui/icons/Warning";
-import DateRange from "@material-ui/icons/DateRange";
-import LocalOffer from "@material-ui/icons/LocalOffer";
 import Update from "@material-ui/icons/Update";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import AccessTime from "@material-ui/icons/AccessTime";
 import Accessibility from "@material-ui/icons/Accessibility";
-import BugReport from "@material-ui/icons/BugReport";
-import Code from "@material-ui/icons/Code";
-import Cloud from "@material-ui/icons/Cloud";
 // core components
 import GridItem from "components/Grid/GridItem.jsx";
-import EnhancedTable from "components/Table/EnhancedTable.jsx";
-// models
-import api from "../../api";
-import { RunningStatus } from "../../constants";
-import { Paper } from "@material-ui/core";
-// core components
-import Danger from "components/Typography/Danger.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardIcon from "components/Card/CardIcon.jsx";
-import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
+// models
+import api from "../../api";
 
 const styles = {
   wrap: {

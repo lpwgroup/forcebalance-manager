@@ -5,13 +5,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 // icons
 import CancelIcon from '@material-ui/icons/Cancel';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
@@ -23,10 +21,8 @@ import EnhancedTable from "components/Table/EnhancedTable.jsx";
 import MoleculeViewer from "components/MoleculeViewer/MoleculeViewer.jsx";
 // Models
 import api from "../../../api";
-import { RunningStatus } from "../../../constants";
 // plotly
 import Plot from 'react-plotly.js';
-import { Checkbox } from "@material-ui/core";
 
 const styles = {
   header: {

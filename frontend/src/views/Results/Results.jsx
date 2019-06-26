@@ -1,17 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import ChartistGraph from "react-chartist";
-
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 // core components
-import GridItem from "components/Grid/GridItem.jsx";
-import EnhancedTable from "components/Table/EnhancedTable.jsx";
 import FFOutput from "./FFOutput.jsx";
 // models
 import api from "../../api";

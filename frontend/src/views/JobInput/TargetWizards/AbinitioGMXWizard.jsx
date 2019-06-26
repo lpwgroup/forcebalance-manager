@@ -6,7 +6,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
@@ -15,7 +14,6 @@ import Chip from '@material-ui/core/Chip';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
-import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Dialog from '@material-ui/core/Dialog';
@@ -27,20 +25,13 @@ import Avatar from '@material-ui/core/Avatar';
 import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
 // @material-ui/icons
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FileUploadIcon from "@material-ui/icons/CloudUpload";
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import DeleteIcon from '@material-ui/icons/Delete';
 import DoneIcon from '@material-ui/icons/Done';
 import ErrorIcon from '@material-ui/icons/Error';
 // Components
-import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Table from "components/Table/Table.jsx";
 import MoleculeViewer from "components/MoleculeViewer/MoleculeViewer.jsx";
 // Models
 import api from "../../../api";
-import { RunningStatus } from "../../../constants";
 
 const styles = {
   iconSmall: {

@@ -1,12 +1,12 @@
 // @material-ui/icons
-import DashboardIcon from "@material-ui/icons/Dashboard";
+// import DashboardIcon from "@material-ui/icons/Dashboard";
 import InputIcon from "@material-ui/icons/Input";
 import ViewListIcon from "@material-ui/icons/ViewList";
 import WorkIcon from "@material-ui/icons/Work";
 import InsertChartIcon from "@material-ui/icons/InsertChart";
 
 // core components/views
-import DashboardPage from "views/Dashboard/Dashboard.jsx";
+// import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import JobInputPage from "views/JobInput/JobInput.jsx";
 import JobOutputPage from "views/JobOutput/JobOutput.jsx";
 import ResultsPage from "views/Results/Results.jsx";
