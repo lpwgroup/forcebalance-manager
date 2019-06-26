@@ -5,14 +5,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 // icons
 import CancelIcon from '@material-ui/icons/Cancel';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 // core components
 // plotly
 import Plot from 'react-plotly.js';
@@ -70,7 +67,6 @@ class ParamChangeView extends React.Component {
     if (paramGroupData && paramGroupData.length > 0) {
       const paramNames = paramGroupData.map(data => {return data[0]});
       const maxNameLength = Math.max(...paramNames.map(d => {return d.length}));
-      console.log(maxNameLength)
       const paramInitValues = paramGroupData.map(data => {return data[1]});
       const paramFinalValues = paramGroupData.map(data => {return data[2]});
       const paramPriorWidths = paramGroupData.map(data => {return data[3]});
@@ -80,7 +76,8 @@ class ParamChangeView extends React.Component {
           data={[
             {
               x: paramInitValues,
-              y: yTickValues.map(v => v+0.3),
+              y: yTickValues,
+              offset: 0.15,
               name: 'Init Value',
               orientation: 'h',
               marker: {
@@ -93,6 +90,7 @@ class ParamChangeView extends React.Component {
             {
               x: paramFinalValues,
               y: yTickValues,
+              offset: -0.15,
               name: 'Final Value',
               orientation: 'h',
               marker: {
@@ -104,7 +102,8 @@ class ParamChangeView extends React.Component {
             },
             {
               x: paramPriorWidths,
-              y: yTickValues.map(v => v-0.2),
+              y: yTickValues,
+              offset: -0.25,
               name: 'Prior Width',
               orientation: 'h',
               marker: {
