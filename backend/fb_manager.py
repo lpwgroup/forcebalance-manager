@@ -15,7 +15,7 @@ class FBManager:
             os.makedirs(self.root)
 
     def load_existing_projects(self):
-        for projectName in os.listdir(self.root):
+        for projectName in sorted(os.listdir(self.root)):
             pfolder = os.path.join(self.root, projectName)
             print(f"Found existing project at <{pfolder}>")
             self._projects[projectName] = project = FBProject(projectName)

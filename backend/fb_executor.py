@@ -80,7 +80,7 @@ class FBExecutor:
             thread = threading.Thread(target=thread_func)
             thread.start()
 
-    def thread_safe(self):
+    def thread_safe(func):
         """ Decorator to make sure function runs with thread safety """
         def new_func(self, *args, **kwargs):
             with self.lock:
@@ -192,23 +192,23 @@ class FBExecutor:
             raise ValueError("normalize_weights is not supported yet")
         print(self.input_options['gen_opt'])
 
-    def set_input_options(self, gen_opts, priors, tgt_opts):
-        self.input_options['gen_opts'].update(gen_opts)
+    def set_input_options(self, gen_opt, priors, tgt_opts):
+        self.input_options['gen_opt'].update(gen_opt)
         self.input_options['priors'].update(priors)
         self.input_options['tgt_opts'].update(tgt_opts)
 
     def write_input_file(self):
         """ Write self.input_options as an input file """
-        gen_opts = self.input_options['gen_opts'].copy()
+        gen_opt = self.input_options['gen_opt'].copy()
         # add a few fields to ensure checkpoint writing
-        gen_opts.update({
+        gen_opt.update({
             'writechk_step': True,
             'writechk': self.checkpoint_fnm,
         })
         with open(self.input_file, 'w') as f:
             f.write('$options\n')
             # write general options
-            for key, value in gen_opts.items():
+            for key, value in gen_opt.items():
                 value_str = ' '.join(map(str, value)) if isinstance(value, (list, tuple)) else str(value)
                 f.write(f"{key:<30s} {value_str}\n")
             # write the priors section
@@ -301,9 +301,11 @@ class FBExecutor:
                 self.get_iter_update()
             elif "Calculation Finished." in line:
                 self.status = 'FINISHED'
-            elif "I have not failed." in line:
+                return
+            elif "Maximum number of optimization steps reached" in line:
                 self.status = 'FINISHED'
                 self.not_converged = True
+                return
             elif "error" in line:
                 self.status = 'ERROR'
             elif "workers busy" in line and "jobs complete" in line:

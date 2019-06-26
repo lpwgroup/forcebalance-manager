@@ -121,7 +121,10 @@ class FBProject(object):
         self.project_folder = project_folder
         os.chdir(project_folder)
         # determine prefix of existing project
-        self.prefix = next(os.path.splitext(f)[0] for f in os.listdir('.') if os.path.splitext(f)[-1]=='.in')
+        for f in os.listdir('.'):
+            if os.path.isfile(f) and os.path.splitext(f)[-1] == '.in':
+                self.prefix = os.path.splitext(f)[0]
+                break
         print(f"@@ Determined prefix of project {self._name} to be {self.prefix}")
         # create fbexecutor first, because the options might be loaded from it
         self._fbexecutor = FBExecutor(self.project_folder, prefix=self.prefix)
@@ -495,6 +498,7 @@ class FBProject(object):
         return x_add, g_add
 
     def get_target_objective_data(self, target_name, opt_iter):
+        opt_iter = int(opt_iter)
         data = self._fbexecutor.get_target_objective_data(target_name, opt_iter)
         # add parameter names and gradients for this target
         obj_dict = self._fbexecutor.obj_hist[opt_iter]
