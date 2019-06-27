@@ -342,7 +342,7 @@ class FBProject(object):
             qdata_file = os.path.join(target_folder, 'qdata.txt')
             m = forcebalance.molecule.Molecule(qdata_file)
             eqm = np.array(m.qm_energies)
-            eqm = (eqm - eqm.min()) * 627.509 # convert to relative energies in kcal/mol
+            eqm = (eqm - eqm.min()) * 2625.5002 # convert to relative energies in kJ/mol
             res['qm_energies'] = eqm.tolist()
         else:
             res['error'] = f"get_target_data for target type {target_options['type']} not implemented"

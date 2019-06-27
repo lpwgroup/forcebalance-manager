@@ -207,12 +207,12 @@ class AbinitioObjectiveView extends React.Component {
         layout={ {
           title: 'QM vs. MM Scatter Plot',
           xaxis: {
-            title: 'QM Relative Energy [ kcal/mol ]',
+            title: 'QM Relative Energy [ kJ/mol ]',
             range: [0, maxValue+1],
           },
           yaxis: {
             scaleanchor: "x",
-            title: 'MM Relative Energy [ kcal/mol ]',
+            title: 'MM Relative Energy [ kJ/mol ]',
             range: [0, maxValue+1],
           },
           showlegend: true,
@@ -272,7 +272,7 @@ class AbinitioObjectiveView extends React.Component {
             title: 'Frame Number',
           },
           yaxis: {
-            title: 'Relative Energies [ kcal/mol ]',
+            title: 'Relative Energies [ kJ/mol ]',
           },
           showlegend: true,
           margin: {

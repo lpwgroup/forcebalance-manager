@@ -303,7 +303,7 @@ class AbinitioSMINORFFOptions extends React.Component {
             title: 'Frame Number',
           },
           yaxis: {
-            title: 'Relative Energies [ kcal/mol ]',
+            title: 'Relative Energies [ kJ/mol ]',
           },
           showlegend: false,
           margin: {
