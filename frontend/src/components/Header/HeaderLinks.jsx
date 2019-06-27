@@ -40,7 +40,7 @@ class HeaderLinks extends React.Component {
       <div>
         <ProjectSelector projectName={this.props.projectName}/>
         <StatusButton projectName={this.props.projectName}/>
-        <Manager className={classes.manager}>
+        {/* <Manager className={classes.manager}>
           <Target>
             <Button
               color={window.innerWidth > 959 ? "transparent" : "white"}
@@ -113,7 +113,7 @@ class HeaderLinks extends React.Component {
           <Hidden mdUp>
             <p className={classes.linkText}>Profile</p>
           </Hidden>
-        </Button>
+        </Button> */}
       </div>
     );
   }
