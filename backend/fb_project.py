@@ -230,7 +230,7 @@ class FBProject(object):
                 byte_f.write(fdata)
         assert target_name not in self.fb_targets, f'Target {target_name} already exists!'
         # use default options of each type
-        target_options = self.default_target_options[target_type]
+        target_options = copy.deepcopy(self.default_target_options[target_type])
         if target_type == 'ABINITIO_GMX':
             gro_filename,qdata_filename,top_filename,mdp_filename = data['fileNames']
             target_options.update({
