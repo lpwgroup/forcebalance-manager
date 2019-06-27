@@ -400,14 +400,6 @@ class FBExecutor:
             res['mm_energies'] = energy_compare_data[:, 1].tolist()
             res['diff'] = energy_compare_data[:, 2].tolist()
             res['weights'] = energy_compare_data[:, 3].tolist()
-            # read molecule geometry
-            mol_file = os.path.join(folder, 'coords.xyz')
-            m = Molecule(mol_file)
-            # generate pdb string
-            if 'resname' not in m.Data:
-                m.Data['resname'] = ['MOL'] * m.na
-                m.Data['resid'] = [1] * m.na
-            res['pdbString'] = '\n'.join(m.write_pdb(range(m.na)))
         else:
             res['error'] = f"get objective data for target type {target_type} not implemented"
             print(f"get_target_objective_data: {res['error']}")
