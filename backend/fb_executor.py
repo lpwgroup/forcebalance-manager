@@ -265,6 +265,7 @@ class FBExecutor:
                 ending_content = '\n'.join(lines[-10:])
             if "Calculation Finished." in ending_content:
                 self.status = 'FINISHED'
+                self.not_converged = False
             elif "I have not failed." in ending_content:
                 self.status = 'FINISHED'
                 self.not_converged = True
@@ -301,6 +302,7 @@ class FBExecutor:
                 self.get_iter_update()
             elif "Calculation Finished." in line:
                 self.status = 'FINISHED'
+                self.not_converged = False
                 return
             elif "Maximum number of optimization steps reached" in line:
                 self.status = 'FINISHED'
