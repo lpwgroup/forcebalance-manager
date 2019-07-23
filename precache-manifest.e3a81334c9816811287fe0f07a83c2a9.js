@@ -12,15 +12,15 @@ self.__precacheManifest = [
     "url": "/forcebalance-manager/static/js/runtime~main.97cf7eb1.js"
   },
   {
-    "revision": "9ca95ba43c6cc343b36d",
-    "url": "/forcebalance-manager/static/js/main.9ca95ba4.chunk.js"
+    "revision": "ca28e06784bf29aff689",
+    "url": "/forcebalance-manager/static/js/main.ca28e067.chunk.js"
   },
   {
     "revision": "33444325f7f7e9f6f085",
     "url": "/forcebalance-manager/static/js/1.33444325.chunk.js"
   },
   {
-    "revision": "9ca95ba43c6cc343b36d",
+    "revision": "ca28e06784bf29aff689",
     "url": "/forcebalance-manager/static/css/main.5f09cb63.chunk.css"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/forcebalance-manager/static/css/1.91afaae7.chunk.css"
   },
   {
-    "revision": "c0a9ea5623f77cd796e5ba54f816eeac",
+    "revision": "b6c5996d0268874275b7f12a7a098e3b",
     "url": "/forcebalance-manager/index.html"
   }
 ];
