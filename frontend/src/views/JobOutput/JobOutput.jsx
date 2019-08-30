@@ -14,6 +14,7 @@ import EnhancedTable from "components/Table/EnhancedTable.jsx";
 import api from "../../api";
 
 import AbinitioObjectiveView from "./TargetObjectives/AbinitioObjectiveView.jsx";
+import TorsionProfileObjectiveView from "./TargetObjectives/TorsionProfileObjectiveView.jsx";
 
 const styles = {
   wrap: {
@@ -46,6 +47,7 @@ const styles = {
 const targetObjectiveViews = {
   'ABINITIO_GMX': AbinitioObjectiveView,
   'ABINITIO_SMIRNOFF': AbinitioObjectiveView,
+  'TORSIONPROFILE_SMIRNOFF': TorsionProfileObjectiveView,
 }
 
 class JobOutput extends React.Component {
@@ -115,7 +117,7 @@ class JobOutput extends React.Component {
   render() {
     const { classes } = this.props;
     const { currentIter, optimizerState, targetsInfo, dialogTargetType, dialogTargetName, dialogOpen } = this.state;
-    const iterations = Object.keys(optimizerState).map(s => parseInt(s)).sort();
+    const iterations = Object.keys(optimizerState).map(s => parseInt(s)).sort((a, b) => a - b);
     const iterButtons = [iterations.map(i => {
       return (<Button key={i} onClick={(e) => this.handleClickIterButton(e, i)} className={classes.iterButton} >
         Iteration {i}

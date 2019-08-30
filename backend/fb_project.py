@@ -329,7 +329,7 @@ class FBProject(object):
             print(f"get_target_data: {res['error']}")
             return res
         # read data from target folder based on type
-        if target_options['type'] in ['ABINITIO_GMX', 'ABINITIO_SMIRNOFF']:
+        if target_options['type'] in ['ABINITIO_GMX', 'ABINITIO_SMIRNOFF', 'TORSIONPROFILE_SMIRNOFF']:
             # read coords file and send coords data
             coords_file = os.path.join(target_folder, target_options['coords'])
             m = forcebalance.molecule.Molecule(coords_file)

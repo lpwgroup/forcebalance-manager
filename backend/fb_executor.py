@@ -135,6 +135,15 @@ class FBExecutor:
                     elif content_lower == '/priors':
                         reading_dest_name = 'gen_opt'
                         reading_dest = self.input_options['gen_opt']
+                    elif content_lower == 'read_mvals':
+                        # read_mvals is a special block inside gen_opt
+                        reading_dest_name = 'read_mvals'
+                        # the read_mvals is discarded for now
+                        reading_dest = {}
+                    elif content_lower == '/read_mvals':
+                        # back to reading gen opot
+                        reading_dest_name = 'gen_opt'
+                        reading_dest = self.input_options['gen_opt']
                     elif content_lower == '$target':
                         reading_dest_name = 'tgt_opt'
                         reading_dest = {}
@@ -147,6 +156,8 @@ class FBExecutor:
                         key = ls[0]
                         if reading_dest_name == 'priors':
                             value = float(ls[-1])
+                        elif reading_dest_name == 'read_mvals':
+                            value = float(ls[2])
                         else:
                             if reading_dest_name == 'gen_opt':
                                 vtype = gen_opt_type_mapping[key]
@@ -155,7 +166,7 @@ class FBExecutor:
                             else:
                                 raise ValueError(f"Input line not in any block:\n{line}")
                             if len(ls) == 1:
-                                assert vtype == bool
+                                assert vtype == bool, f'vtype {vtype} is not bool from line {line}'
                                 value = True
                             elif len(ls) == 2:
                                 if vtype == bool:
@@ -254,7 +265,7 @@ class FBExecutor:
                         }
                         # load mval value into mval_hist if not exist
                         if opt_iter not in self.mvals_hist:
-                            self.mvals_hist[opt_iter] = np.loadtxt(os.path.join(iter_folder_path, 'mvals.txt'))
+                            self.mvals_hist[opt_iter] = np.loadtxt(os.path.join(iter_folder_path, 'mvals.txt'), ndmin=1)
         print(f"@@ read_tmp_folder {self.tmp_folder} finished ({time.time() - t0:.2f} s)")
 
     def read_output_file(self):
@@ -339,7 +350,7 @@ class FBExecutor:
         # update self.mvals_hist
         assert len(self.mvals_hist) == opt_iter, f'mvals_hist length {len(self.mvals_hist)} not consistent with obj_hist length {opt_iter}'
         first_target_name = next(iter(self.input_options['tgt_opts']))
-        self.mvals_hist[opt_iter] = np.loadtxt(os.path.join(self.tmp_folder, first_target_name, f'iter_{opt_iter:04d}', 'mvals.txt'))
+        self.mvals_hist[opt_iter] = np.loadtxt(os.path.join(self.tmp_folder, first_target_name, f'iter_{opt_iter:04d}', 'mvals.txt'), ndmin=1)
         # trigger observer
         self.notify_observer('iter_update')
 
@@ -388,7 +399,7 @@ class FBExecutor:
             return res
         # get target type specific objective information
         target_type = target_options['type']
-        if target_type.lower().startswith('abinitio'):
+        if target_type.lower().startswith('abinitio') or target_type.lower().startswith('torsionprofile'):
             # read energy compare data
             energy_compare_file = os.path.join(folder, 'EnergyCompare.txt')
             if not os.path.isfile(energy_compare_file):
