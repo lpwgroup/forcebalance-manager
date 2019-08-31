@@ -172,6 +172,7 @@ class FBProject(object):
             # if the json file does not exist, try to load from the input file through executor
             self.force_field.priors = copy.deepcopy(self._fbexecutor.input_options['priors'])
         self.force_field.rsmake()
+        self.force_field.mktransmat()
 
     @in_project_folder
     def save_ff_prior(self):
@@ -209,6 +210,7 @@ class FBProject(object):
         assert hasattr(self, 'force_field'), 'self.force_field is not created yet'
         self.force_field.priors = {rule[0]: float(rule[1]) for rule in data}
         self.force_field.rsmake()
+        self.force_field.mktransmat()
         # save prior rules to file
         self.save_ff_prior()
         return 0
