@@ -1,10 +1,10 @@
 {
   "main.css": "/forcebalance-manager/static/css/main.f86c2bf5.chunk.css",
-  "main.js": "/forcebalance-manager/static/js/main.3bc6d164.chunk.js",
-  "main.js.map": "/forcebalance-manager/static/js/main.3bc6d164.chunk.js.map",
+  "main.js": "/forcebalance-manager/static/js/main.6a7f40a2.chunk.js",
+  "main.js.map": "/forcebalance-manager/static/js/main.6a7f40a2.chunk.js.map",
   "static/css/1.7cd2742f.chunk.css": "/forcebalance-manager/static/css/1.7cd2742f.chunk.css",
-  "static/js/1.b0c898a8.chunk.js": "/forcebalance-manager/static/js/1.b0c898a8.chunk.js",
-  "static/js/1.b0c898a8.chunk.js.map": "/forcebalance-manager/static/js/1.b0c898a8.chunk.js.map",
+  "static/js/1.93d288a3.chunk.js": "/forcebalance-manager/static/js/1.93d288a3.chunk.js",
+  "static/js/1.93d288a3.chunk.js.map": "/forcebalance-manager/static/js/1.93d288a3.chunk.js.map",
   "runtime~main.js": "/forcebalance-manager/static/js/runtime~main.97cf7eb1.js",
   "runtime~main.js.map": "/forcebalance-manager/static/js/runtime~main.97cf7eb1.js.map",
   "static/css/main.f86c2bf5.chunk.css.map": "/forcebalance-manager/static/css/main.f86c2bf5.chunk.css.map",
@@ -12,6 +12,6 @@
   "static/media/ForceBalance.svg": "/forcebalance-manager/static/media/ForceBalance.a85ca401.svg",
   "static/css/1.7cd2742f.chunk.css.map": "/forcebalance-manager/static/css/1.7cd2742f.chunk.css.map",
   "index.html": "/forcebalance-manager/index.html",
-  "precache-manifest.4f3f84d50b80773bb8ba748be7636171.js": "/forcebalance-manager/precache-manifest.4f3f84d50b80773bb8ba748be7636171.js",
+  "precache-manifest.584edd19ed9b079f91fe61622462d39b.js": "/forcebalance-manager/precache-manifest.584edd19ed9b079f91fe61622462d39b.js",
   "service-worker.js": "/forcebalance-manager/service-worker.js"
 }
