@@ -169,6 +169,8 @@ class TorsionProfileObjectiveView extends React.Component {
       const maxQMValue = Math.max(...currObjectiveData.qm_energies);
       const maxMMValue = Math.max(...currObjectiveData.mm_energies);
       let maxValue = Math.max(maxQMValue, maxMMValue);
+      let minValue = Math.min(...currObjectiveData.qm_energies, ...currObjectiveData.mm_energies);
+      let padValue = Math.min((maxValue - minValue) * 0.05, 1);
       let data = [{
         x: currObjectiveData.qm_energies,
         y: currObjectiveData.mm_energies,
@@ -186,6 +188,7 @@ class TorsionProfileObjectiveView extends React.Component {
             name: "Iter " + iterOpt,
           });
           maxValue = Math.max(maxValue, ...objectiveData[iterOpt].qm_energies, ...objectiveData[iterOpt].mm_energies);
+          minValue = Math.min(minValue, ...objectiveData[iterOpt].qm_energies, ...objectiveData[iterOpt].mm_energies);
         }
       }
       data.push({
@@ -208,12 +211,12 @@ class TorsionProfileObjectiveView extends React.Component {
           title: 'QM vs. MM Scatter Plot',
           xaxis: {
             title: 'QM Relative Energy [ kJ/mol ]',
-            range: [0, maxValue+1],
+            range: [minValue-padValue, maxValue+padValue],
           },
           yaxis: {
             scaleanchor: "x",
             title: 'MM Relative Energy [ kJ/mol ]',
-            range: [0, maxValue+1],
+            range: [minValue-padValue, maxValue+padValue],
           },
           showlegend: true,
           legend: {
